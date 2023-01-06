@@ -1,17 +1,6 @@
-import math
-import random as rd
-import cv2
-import mediapipe as mp
-import numpy as np
-from cvzone.HandTrackingModule import HandDetector
-import sys
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
-from PyQt5.QtGui import QPixmap
 # filter import
-import Filters as flt
-from ToolItem import *
+from snap import Filters as flt
+from snap.ToolItem import *
 
 mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
@@ -79,7 +68,7 @@ class SnapApp(QWidget):
 
         #views
         Label(self,text="SnapChat",size=20,place=(220,50))
-        Label(self,image="snapchat.png",place=(390,35))
+        Label(self,image="icons/snapchat.png",place=(390,35))
 
         t1 = ToolItem(self, image="icons/mask.png",text='mask')
         t2 = ToolItem(self, image="icons/patch.png",text='eyepatch')
