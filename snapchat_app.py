@@ -6,6 +6,7 @@ mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
 mp_face_mesh = mp.solutions.face_mesh
 
+
 class Shape():
     def __init__(self, color=(0, 0, 255)):
         self.color = color
@@ -13,9 +14,10 @@ class Shape():
     def createCircle(self, img, cx, cy, radius):
         cv2.circle(img, (cx, cy), radius, self.color, cv2.FILLED)
 
+
 class Label(QLabel):
-    def __init__(self,widget=None,text=None,size=5,fontFamily="Arial",place=(0,0),image=None):
-        super(Label,self).__init__(widget)
+    def __init__(self, widget=None, text=None, size=5, fontFamily="Arial", place=(0, 0), image=None):
+        super(Label, self).__init__(widget)
         self.font = QFont()
         self.text = text
         self.size = size
@@ -33,13 +35,12 @@ class Label(QLabel):
         if self.imagePath != None:
             self.pixmap = QPixmap(self.imagePath)
             self.setPixmap(self.pixmap)
-            self.resize(self.pixmap.width(),self.pixmap.height())
-        self.move(self.place[0],self.place[1])
-
+            self.resize(self.pixmap.width(), self.pixmap.height())
+        self.move(self.place[0], self.place[1])
 
 
 class SnapApp(QWidget):
-    def __init__(self,image=None,landmarks=None):
+    def __init__(self, image=None, landmarks=None):
         super(SnapApp, self).__init__()
         self.image = image
         self.landmarks = landmarks
@@ -47,47 +48,35 @@ class SnapApp(QWidget):
         self.tools = list("aa")
         self.initUI()
 
-
-
-    def place(self,start=10,width=64,height=0,gap=2):
+    def place(self, start=10, width=64, height=0, gap=2):
         for i in self.tools:
-            move = (start,height)
-            i.move(move[0],move[1])
-            start += width+gap
+            move = (start, height)
+            i.move(move[0], move[1])
+            start += width + gap
 
     def load(self):
         for t in self.tools:
             self.results[t.text] = t.call
 
-
     def initUI(self):
         # widget properties
-        self.setGeometry(700,100,700,500)
+        self.setGeometry(700, 100, 700, 500)
         self.setStyleSheet('background-color:#f5facd;')
         self.setWindowTitle('SnapChat Filters')
 
-        #views
-        Label(self,text="SnapChat",size=20,place=(220,50))
-        Label(self,image="icons/snapchat.png",place=(390,35))
+        # views
+        Label(self, text="SnapChat", size=20, place=(220, 50))
+        Label(self, image="icons/snapchat.png", place=(410, 35))
 
-        t1 = ToolItem(self, image="icons/mask.png",text='mask')
-        t2 = ToolItem(self, image="icons/patch.png",text='eyepatch')
-        t3 = ToolItem(self, image="icons/lips.png",text='lips')
-        # t4 = ToolItem(self, image="icons/with_outline.png")
+        t1 = ToolItem(self, image="icons/mask.png", text='mask')
+        t2 = ToolItem(self, image="icons/patch.png", text='eye_patch')
+        t3 = ToolItem(self, image="icons/lips.png", text='lips')
+        t4 = ToolItem(self, image="icons/eyelashes.png", text='eye_lash')
         # t5 = ToolItem(self, image="icons/without_outline.png")
 
-        self.tools = [t1,t2,t3]
-        self.place(start=230,height=200,gap=10)
+        self.tools = [t1, t2, t3, t4]
+        self.place(start=230, height=200, gap=10)
 
-
-
-
-
-
-
-
-detector = HandDetector(maxHands=1, detectionCon=0.8)
-# handPointer = Shape()
 
 width = 1050
 height = 1000
@@ -100,7 +89,6 @@ cap.set(4, height)
 app = QApplication(sys.argv)
 snap = SnapApp()
 snap.show()
-
 
 with mp_face_mesh.FaceMesh(
         max_num_faces=1,
@@ -146,9 +134,11 @@ with mp_face_mesh.FaceMesh(
             image = flt.drawLips(image, coodinates=landmarks, alpha=0.2, color=lipscolor, innerLineColor=lipscolor,
                                  outerLineColor=lipscolor)
         if snap.results['mask']:
-            image = flt.drawMask(img=image,landmarks=landmarks)
-        if snap.results['eyepatch']:
-            image = flt.drawEyePatch(image=image,landmarks=landmarks)
+            image = flt.drawMask(img=image, landmarks=landmarks)
+        if snap.results['eye_lash']:
+            image = flt.drawEyeLash(image=image, landmarks=landmarks)
+        if snap.results['eye_patch']:
+            image = flt.drawEyePatch(image=image, landmarks=landmarks)
 
         # Flip the image horizontally for a selfie-view display.
         cv2.imshow('SnapChatFilter', cv2.flip(image, 1))

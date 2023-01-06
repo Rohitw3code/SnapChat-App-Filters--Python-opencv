@@ -37,8 +37,26 @@ def drawLips(img, coodinates, thickness=1, color=(0, 0, 255), innerLineColor=(0,
     except:
         return img
 
-def drawEyeBrow(image,landmarks):
-    path = []
+def drawEyeLash(image,landmarks):
+    right = [(33,247),(161,30),(160,29),(159,27),(158,28),(157,56),(173,190)]
+    left = [(398,414),(384,286),(385,258),(386,257),(387,259),(388,260),(466,467)]
+    cood = np.array(landmarks).reshape((-1, 1, 2))
+    for i,j in right:
+        try:
+            start = (cood[i][0][0], cood[i][0][1])
+            end = (cood[j][0][0], cood[j][0][1])
+            cv2.line(image, start, end, (0, 0, 0), 2)
+        except:
+            pass
+
+    for i,j in left:
+        try:
+            start = (cood[i][0][0], cood[i][0][1])
+            end = (cood[j][0][0], cood[j][0][1])
+            cv2.line(image, start, end, (0, 0, 0), 2)
+        except:
+            pass
+    return image
 
 
 def drawMask(img, landmarks, thickness=1,color=(0,0,0),outlineColor=(0,0,0)):

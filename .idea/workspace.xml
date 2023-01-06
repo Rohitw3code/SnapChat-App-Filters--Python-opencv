@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e60a6e41-72dc-4029-95df-c62e0cc18912" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/snap/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Filters.py" beforeDir="false" afterPath="$PROJECT_DIR$/snap/Filters.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToolItem.py" beforeDir="false" afterPath="$PROJECT_DIR$/snap/ToolItem.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/face_landmarks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icons/eyelashes.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/snap/Filters.py" beforeDir="false" afterPath="$PROJECT_DIR$/snap/Filters.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/snapchat_app.py" beforeDir="false" afterPath="$PROJECT_DIR$/snapchat_app.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,16 +34,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/HP/Desktop/qt5/icons&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/HP/Desktop/qt5/icons"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\HP\Desktop\qt5\icons" />
+      <recent name="C:\Users\HP\Desktop\qt5" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\HP\Desktop\qt5\snap" />
     </key>
   </component>
   <component name="RunManager">
