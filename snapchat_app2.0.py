@@ -1,6 +1,13 @@
 # filter import
 from snap import Filters as flt
+from snap.Filters import *
 from snap.ToolItem import *
+from PyQt5.QtWidgets import *
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtGui
+from PyQt5.QtGui import *
+from PyQt5.QtCore import *
+from utils.widgets import *
 
 mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
@@ -60,7 +67,7 @@ class SnapApp(QWidget):
 
     def initUI(self):
         # widget properties
-        self.setGeometry(700, 100, 700, 500)
+        self.setGeometry(700, 100, 1000, 500)
         self.setStyleSheet('background-color:#f5facd;')
         self.setWindowTitle('SnapChat Filters')
 
@@ -72,10 +79,19 @@ class SnapApp(QWidget):
         t2 = ToolItem(self, image="icons/patch.png", text='eye_patch')
         t3 = ToolItem(self, image="icons/lips.png", text='lips')
         t4 = ToolItem(self, image="icons/eyelashes.png", text='eye_lash')
-        t5 = ToolItem(self, image="icons/iris.png",text='iris')
-        t6 = ToolItem(self, image="icons/sclera.png",text='sclera')
+        t5 = ToolItem(self, image="icons/iris.png", text='iris')
+        t6 = ToolItem(self, image="icons/sclera.png", text='sclera')
 
-        self.tools = [t1, t2, t3, t4,t5,t6]
+        # Filter tool
+        Label(self, text="Filter Tool", size=18, place=(550, 70))
+
+        self.spin = QSpinBox(self)
+        self.spin.setGeometry(550, 150, 80, 40)
+        self.spin.setRange(0, 9)
+        self.spin.setPrefix("Alpha ")
+        self.spin.setSizeIncrement(10, 10)
+
+        self.tools = [t1, t2, t3, t4, t5, t6]
         self.place(start=50, height=200, gap=10)
 
 
@@ -90,6 +106,8 @@ cap.set(4, height)
 app = QApplication(sys.argv)
 snap = SnapApp()
 snap.show()
+
+lips = Lips()
 
 with mp_face_mesh.FaceMesh(
         max_num_faces=1,
@@ -126,20 +144,20 @@ with mp_face_mesh.FaceMesh(
 
                     landmarks.append([relative_x, relative_y])
 
-
-
-
         snap.load()
         snap.image = image
         snap.landmarks = landmarks
 
-
         if snap.results['lips']:
             lipscolor = (0, 0, 255)
-            image = flt.drawLips(image=image, coodinates=landmarks, alpha=0.2, color=lipscolor, innerLineColor=lipscolor,
-                                 outerLineColor=lipscolor)
+            # image = flt.drawLips(image=image, coodinates=landmarks, alpha=0.2, color=lipscolor, innerLineColor=lipscolor,
+            #                      outerLineColor=lipscolor)
+            lips.image = image
+            lips.landmarks = landmarks
+            lips.color = lipscolor
+            image = lips.drawLips()
         if snap.results['sclera']:
-            image = flt.drawSclera(image, landmarks,alpha=0.5,color=(0,0,255))
+            image = flt.drawSclera(image, landmarks, alpha=0.5, color=(0, 0, 255))
         if snap.results['mask']:
             image = flt.drawMask(image=image, landmarks=landmarks)
         if snap.results['eye_lash']:
@@ -147,7 +165,8 @@ with mp_face_mesh.FaceMesh(
         if snap.results['iris']:
             image = flt.drawIris(image, landmarks, alpha=1, color=(238, 169, 126))
         if snap.results['eye_patch']:
-            image = flt.drawEyePatch(image=image, landmarks=landmarks,alpha=0.5)
+            pass
+            # image = flt.drawEyePatch(image=image, landmarks=landmarks,alpha=0.5)
 
         # Flip the image horizontally for a selfie-view display.
         cv2.imshow('SnapChatFilter', cv2.flip(image, 1))

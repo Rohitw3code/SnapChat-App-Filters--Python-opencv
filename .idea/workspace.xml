@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e60a6e41-72dc-4029-95df-c62e0cc18912" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/face_landmarks.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/eyelashes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hair_segm.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icons/iris.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icons/sclera.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/snapchat_app2.0.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/fire_hair_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/widgets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/snap/Filters.py" beforeDir="false" afterPath="$PROJECT_DIR$/snap/Filters.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/snapchat_app.py" beforeDir="false" afterPath="$PROJECT_DIR$/snapchat_app.py" afterDir="false" />
@@ -39,15 +45,17 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/HP/Desktop/qt5/icons"
+    "last_opened_file_path": "C:/Users/HP/Desktop/qt5"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\HP\Desktop\qt5\icons" />
       <recent name="C:\Users\HP\Desktop\qt5" />
+      <recent name="C:\Users\HP\Desktop\qt5\icons" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\HP\Desktop\qt5\utils" />
+      <recent name="C:\Users\HP\Desktop\qt5" />
       <recent name="C:\Users\HP\Desktop\qt5\snap" />
     </key>
   </component>
